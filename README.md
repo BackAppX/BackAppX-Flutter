@@ -21,9 +21,7 @@ Auth, User, Device, Notification, Push, Analytics, Crashlytics, Remote Config, S
 App Foreground, App Exit, App Kill, App Restart, Ap
 
 ## Getting started
-this package is not yet published to pub.dev. So you have to add this package to your pubspec.yaml file manually.
-it might be published to pub.dev in the future.
-you will have to add http package to your pubspec.yaml file manually.
+this package is currently under development. Please use it at your own risk.
 
 
 ## Installation
@@ -35,7 +33,7 @@ dependencies:
 ```
 
 ## Usage
-To use this plugin, add backappx as a dependency in your pubspec.yaml file.
+To use this package, add backappx as a dependency in your pubspec.yaml file.
 
 ```dart
 
@@ -70,4 +68,4 @@ SOFTWARE.
 
 ## Additional information
 
-For help getting started with Flutter, view our online
+For help getting started with Flutter, view our online [documentation](https://back-app-x-documentation.vercel.app/).
