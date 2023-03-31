@@ -26,6 +26,14 @@ TODO: List what your package can do. Maybe include images, gifs, or videos.
 TODO: List prerequisites and provide or point to information on how to
 start using the package.
 
+## Installation
+Add the following dependency to your pubspec.yaml:
+
+```dart
+dependencies:
+  backappx: [insert package version number here]
+```
+
 ## Usage
 
 TODO: Include short and useful examples for package users. Add longer examples
