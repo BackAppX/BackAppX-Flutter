@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 
 //here you can add your own variables
 
-
 class BackAppX {
   static Auth auth = Auth();
   static User user = User();

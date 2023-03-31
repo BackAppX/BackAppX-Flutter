@@ -1,7 +1,7 @@
 name: backappx
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: BackAppX Official Package.
+version: 0.1.0
+homepage: https://github.com/BackAppX/BackAppX-SDK
 
 environment:
   sdk: ">=2.17.1 <3.0.0"
