@@ -31,7 +31,7 @@ Add the following dependency to your pubspec.yaml:
 
 ```dart
 dependencies:
-  backappx: [insert package version number here]
+  backappx: 0.1.0
 ```
 
 ## Usage
