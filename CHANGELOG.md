@@ -1,4 +1,4 @@
-## 0.1.0
+## 0.1.2
 
 User Authentication
 
@@ -18,4 +18,5 @@ User Authentication
   * User can see account email address verification status
   * User can see account email address verification token
   * User can see account email address verification token expiration date
+  * User can see account email address verification token expiration time
 

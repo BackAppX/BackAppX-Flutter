@@ -17,8 +17,7 @@ BackAppX-SDK is a Flutter package for the BackAppX platform.
 
 ## Features
 
-Auth, User, Device, Notification, Push, Analytics, Crashlytics, Remote Config, Storage, Database, Admob, Facebook, Google, Twitter, Linkedin, Github, Apple, Email, Phone, SMS, OTP, Payment, In-App Purchase, Location, Map, Geofence, Barcode, QR Code, NFC, Bluetooth, Wifi, Camera, Gallery, File, Audio, Video, Document, Share, Clipboard, Contact, Calendar, SMS, Email, Call, Webview, App, App Info, App Update, App Rating, App Review, App Share, App Invite, App Install, App Uninstall, App Launch, App Close, App Open, App Minimize, App Maximize, App Restore, App Background, 
-App Foreground, App Exit, App Kill, App Restart, Ap
+Auth, Products, Order, Payment, Storage
 
 ## Getting started
 this package is currently under development. Please use it at your own risk.
@@ -29,7 +28,7 @@ Add the following dependency to your pubspec.yaml:
 
 ```dart
 dependencies:
-  backappx: 0.1.0
+  backappx: 0.1.1
 ```
 
 ## Usage
@@ -37,7 +36,7 @@ To use this package, add backappx as a dependency in your pubspec.yaml file.
 
 ```dart
 
-import 'package:http/http.dart' as http;
+import 'package:backappx/backappx.dart';
 ```
 
 ## License

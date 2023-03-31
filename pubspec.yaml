@@ -1,6 +1,6 @@
 name: backappx
 description: BackAppX Official Package.
-version: 0.1.0
+version: 0.1.2
 homepage: https://github.com/BackAppX/BackAppX-SDK
 
 environment:
