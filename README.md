@@ -14,17 +14,17 @@ and the Flutter guide for
 ## Backappx-SDK
 BackAppX-SDK is a Flutter package for the BackAppX platform.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Auth, User, Device, Notification, Push, Analytics, Crashlytics, Remote Config, Storage, Database, Admob, Facebook, Google, Twitter, Linkedin, Github, Apple, Email, Phone, SMS, OTP, Payment, In-App Purchase, Location, Map, Geofence, Barcode, QR Code, NFC, Bluetooth, Wifi, Camera, Gallery, File, Audio, Video, Document, Share, Clipboard, Contact, Calendar, SMS, Email, Call, Webview, App, App Info, App Update, App Rating, App Review, App Share, App Invite, App Install, App Uninstall, App Launch, App Close, App Open, App Minimize, App Maximize, App Restore, App Background, 
+App Foreground, App Exit, App Kill, App Restart, Ap
 
 ## Getting started
+this package is not yet published to pub.dev. So you have to add this package to your pubspec.yaml file manually.
+it might be published to pub.dev in the future.
+you will have to add http package to your pubspec.yaml file manually.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
 
 ## Installation
 Add the following dependency to your pubspec.yaml:
@@ -35,12 +35,11 @@ dependencies:
 ```
 
 ## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+To use this plugin, add backappx as a dependency in your pubspec.yaml file.
 
 ```dart
-const like = 'sample';
+
+import 'package:http/http.dart' as http;
 ```
 
 ## License
@@ -71,6 +70,4 @@ SOFTWARE.
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+For help getting started with Flutter, view our online
