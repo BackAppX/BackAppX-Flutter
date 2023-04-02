@@ -14,6 +14,7 @@ class Auth {
   static const String _baseUrl = 'http://localhost:9092/';
   static const _loginUrl = '$_baseUrl/login';
   static const String _registerUrl = '$_baseUrl/register';
+
   static bool login(email, password) {
     http.post(Uri.parse(_loginUrl), body: {
       'email': email,
