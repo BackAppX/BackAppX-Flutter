@@ -5,8 +5,11 @@ import 'package:http/http.dart' as http;
 //here you can add your own variables
 
 class BackAppX {
+  static const projectID = '5f9f9f9f9f9f9f9f9f9f9f9f';
   static Auth auth = Auth();
   static User user = User();
+  static Product product = Product();
+  static Order order = Order();
 }
 
 
@@ -59,3 +62,56 @@ class User {
     //delete request to server
   }
 }
+
+class Product {
+  static const String _baseUrl = 'http://localhost:8000/api';
+  static const String _productUrl = '$_baseUrl/product';
+  static void getProduct() {
+    print('get product');
+    //get request to server
+  }
+
+  static void updateProduct() {
+    print('update product');
+    //put request to server
+  }
+
+  static void deleteProduct() {
+    print('delete product');
+    //delete request to server
+  }
+}
+
+class Order {
+  static const String _baseUrl = 'http://localhost:8000/api';
+  static const String _orderUrl = '$_baseUrl/order';
+  static void getOrder() {
+    print('get order');
+    //get request to server
+  }
+
+  static void updateOrder() {
+    print('update order');
+    //put request to server
+  }
+
+  static void deleteOrder() {
+    print('delete order');
+    //delete request to server
+  }
+  static void createOrder() {
+    print('create order');
+    //post request to server
+  }
+
+  static void getOrders() {
+    print('get orders');
+    //get request to server
+  }
+  static void payOrder() {
+    print('pay order');
+    //post request to server
+  }
+}
+
+
