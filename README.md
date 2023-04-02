@@ -12,7 +12,9 @@ and the Flutter guide for
 -->
 
 ## Backappx-SDK
-![GitHub](https://img.shields.io/github/license/BackAppX/BackAppX-Package) <BR>
+![GitHub](https://img.shields.io/github/license/BackAppX/BackAppX-Package)
+![Pub Version](https://img.shields.io/pub/v/backappx)
+<BR>
 BackAppX-SDK is a Flutter package for the BackAppX platform.
 
 
