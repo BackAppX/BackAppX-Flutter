@@ -7,11 +7,13 @@ class BackAppX {
 
   // here you can add more static classes
   static Auth auth = Auth();
+  static Order order = Order();
 }
 
 class Auth {
   // here you can add routes for your auth class
   static const String _baseUrl = 'http://localhost:9092/user';
+
   static const _loginUrl = '$_baseUrl/login';
   static const _registerUrl = '$_baseUrl/register';
   static const _editUserUrl = '$_baseUrl/editUser';
@@ -54,5 +56,6 @@ class Auth {
     return response;
   }
 }
+class Order {}
 
 
