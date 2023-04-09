@@ -3,10 +3,10 @@ import 'package:http/http.dart' as http;
 
 
 class BackAppX {
-  static const projectRef = '';
-
+  static var projectRef = '';
   // here you can add more static classes
   static Auth auth = Auth();
+  static Product product = Product();
   static Order order = Order();
 }
 
@@ -16,8 +16,8 @@ class Auth {
 
   static final _registerUrl = '$_baseUrl/client';
   static final _loginUrl = '$_baseUrl/login';
-  static final _editClientUrl = '$_baseUrl/client/:id';
-  static final _getClientUrl = '$_baseUrl/clientbyid/:id';
+  static final _editClientUrl = '$_baseUrl/client';
+  static final _getClientUrl = '$_baseUrl/clientbyid';
   static final _forgetPasswordUrl = '$_baseUrl/clientforgot-password';
   static final _resetPasswordUrl = '$_baseUrl/clientresetpassword';
 
@@ -44,8 +44,8 @@ class Auth {
 
   }
 
-  static Future<http.Response> editProfile(name, familyName,fullName, email,phoneNumber,password,image) async {
-    final response = await http.put(Uri.parse(_editClientUrl), body: {
+  static Future<http.Response> editProfile(id, name, familyName,fullName, email,phoneNumber,password,image) async {
+    final response = await http.put(Uri.parse('$_editClientUrl/$id'), body: {
       'name': name,
       'familyName': familyName,
       'fullName': fullName,
@@ -68,7 +68,7 @@ class Auth {
   }
 
   static Future<http.Response> forgetPassword(email) async {
-    final response = await http.post(Uri.parse(_forgetPasswordUrl), body: {
+    final response = await http.put(Uri.parse(_forgetPasswordUrl), body: {
       'email': email,
     });
     print(response.body.toString());
@@ -76,16 +76,16 @@ class Auth {
   }
 
   static Future<http.Response> resetPassword(password,token) async {
-    final response = await http.post(Uri.parse(_resetPasswordUrl), body: {
+    final response = await http.put(Uri.parse(_resetPasswordUrl), body: {
       'newPass': password,
       'resetLink': token,
     });
-
+    print(response.body.toString());
     return response;
   }
 }
 
-
+class Product {}
 class Order {}
 
 
