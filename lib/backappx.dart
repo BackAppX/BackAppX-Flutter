@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 
 class BackAppX {
-  static var projectRef = '';
+  static late String projectRef ;
   // here you can add more static classes
   static Auth auth = Auth();
   static Product product = Product();
