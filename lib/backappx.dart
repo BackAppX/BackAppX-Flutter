@@ -12,50 +12,80 @@ class BackAppX {
 
 class Auth {
   // here you can add routes for your auth class
-  static const String _baseUrl = 'http://localhost:9092/user';
+  static final String _baseUrl = 'http://localhost:9092/client';
 
-  static const _loginUrl = '$_baseUrl/login';
-  static const _registerUrl = '$_baseUrl/register';
-  static const _editUserUrl = '$_baseUrl/editUser';
-  static const _getUserUrl = '$_baseUrl/getUser';
+  static final _registerUrl = '$_baseUrl/client';
+  static final _loginUrl = '$_baseUrl/login';
+  static final _editClientUrl = '$_baseUrl/client/:id';
+  static final _getClientUrl = '$_baseUrl/clientbyid/:id';
+  static final _forgetPasswordUrl = '$_baseUrl/clientforgot-password';
+  static final _resetPasswordUrl = '$_baseUrl/clientresetpassword';
+
+  static Future<http.Response> register(name,familyName, email, phoneNumber, password) async {
+    final response = await http.post(Uri.parse(_registerUrl), body: {
+      'name': name,
+      'familyName': familyName,
+      'email': email,
+      'phoneNumber': phoneNumber,
+      'password': password,
+      'reference': BackAppX.projectRef
+    });
+    print(response.body);
+    return response;
+  }
 
   static Future<http.Response> login(email, password) async {
     final response = await http.post(Uri.parse(_loginUrl), body: {
       'email': email,
       'password': password,
     });
-
+    print(response.body);
     return response;
 
   }
 
-  static Future<http.Response> register(name, email, password) async {
-    final response = await http.post(Uri.parse(_registerUrl), body: {
+  static Future<http.Response> editProfile(name, familyName,fullName, email,phoneNumber,password,image) async {
+    final response = await http.put(Uri.parse(_editClientUrl), body: {
       'name': name,
+      'familyName': familyName,
+      'fullName': fullName,
       'email': email,
+      'phoneNumber': phoneNumber,
       'password': password,
-      'project': BackAppX.projectRef,
+      'reference': BackAppX.projectRef,
+      'image': image
     });
 
+    print(response.body);
     return response;
   }
 
-  static Future<http.Response> editUser(name, email, password) async {
-    final response = await http.put(Uri.parse(_editUserUrl), body: {
-      'name': name,
+  static Future<http.Response> getClient(id) async {
+    final response = await http.get(Uri.parse('$_getClientUrl/$id'));
+
+    print(response.body.toString());
+    return response;
+  }
+
+  static Future<http.Response> forgetPassword(email) async {
+    final response = await http.post(Uri.parse(_forgetPasswordUrl), body: {
       'email': email,
-      'password': password,
     });
-
+    print(response.body.toString());
     return response;
   }
 
-  static Future<http.Response> getUser(id) async {
-    final response = await http.get(Uri.parse('$_getUserUrl/$id'));
+  static Future<http.Response> resetPassword(password,token) async {
+    final response = await http.post(Uri.parse(_resetPasswordUrl), body: {
+      'newPass': password,
+      'resetLink': token,
+    });
 
     return response;
   }
 }
+
+
 class Order {}
 
 
