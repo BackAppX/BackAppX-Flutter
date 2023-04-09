@@ -41,7 +41,7 @@ void main() {
       // Set up
       final name = 'Kareem';
       final familyName = 'karamù';
-      final email = 'Karammannai2@gmail.com';
+      final email = 'Karammannai3@gmail.com';
       final phone = '24545554';
       final password = '123456';
 

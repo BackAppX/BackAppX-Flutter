@@ -16,8 +16,14 @@ BackAppX-SDK is a Flutter package for the BackAppX platform.
 
 
 ## Features
+This package provides a simple way to integrate the BackAppX platform into your Flutter app.
+It provides the following classes:
 
-Auth, Products, Order, Payment, Storage
+Auth : this class provides a simple way to authenticate clients with the BackAppX platform.
+Products : this class provides a simple way to manage products from the BackAppX platform.
+Category : this class provides a simple way to manage categories from the BackAppX platform.
+Orders : this class provides a simple way to manage orders from the BackAppX platform. 
+Payments : this class provides a simple way to manage payments from the BackAppX platformusing stripe integration.
 
 ## Getting started
 this package is currently under development. Please use it at your own risk.

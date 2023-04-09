@@ -13,7 +13,6 @@ class BackAppX {
 class Auth {
   // here you can add routes for your auth class
   static final String _baseUrl = 'http://localhost:9092/client';
-
   static final _registerUrl = '$_baseUrl/client';
   static final _loginUrl = '$_baseUrl/login';
   static final _editClientUrl = '$_baseUrl/client';
