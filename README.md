@@ -23,7 +23,7 @@ Auth : this class provides a simple way to authenticate clients with the BackApp
 Products : this class provides a simple way to manage products from the BackAppX platform. <br>
 Category : this class provides a simple way to manage categories from the BackAppX platform. <br>
 Orders : this class provides a simple way to manage orders from the BackAppX platform.  <br>
-Payments : this class provides a simple way to manage payments from the BackAppX platformusing stripe integration.
+Payments : this class provides a simple way to manage payments from the BackAppX platform using stripe integration.
 
 ## Getting started
 this package is currently under development. Please use it at your own risk.
@@ -42,7 +42,7 @@ To use this package, add backappx as a dependency in your pubspec.yaml file.
 
 ```dart
 
-import 'package:backappx/backappx.dart';
+import 'package:backappx/project.dart';
 ```
 
 ## License
