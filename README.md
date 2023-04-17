@@ -1,30 +1,20 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-## Backappx-SDK
-[![GitHub](https://img.shields.io/github/license/BackAppX/BackAppX-Package)](https://github.com/BackAppX/BackAppX-Package/blob/0.1.2/LICENSE)
-[![Pub Version](https://img.shields.io/pub/v/backappx)](https://pub.dev/packages/backappx)
-<BR>
-BackAppX-SDK is a Flutter package for the BackAppX platform.
-
-
-## Features
-
-Auth, Products, Order, Payment, Storage
+## Backappx-Package
+BackAppX-Package is a Flutter package for the BackAppX platform.
 
 ## Getting started
-this package is currently under development. Please use it at your own risk.
+This package is currently under development. Please use it at your own risk.
 
+## Features
+The package provides a simple way to integrate the BackAppX platform into your Flutter app.
+It provides the following classes:
+
+• Auth : this class provides a simple way to authenticate clients with the BackAppX platform. <br>
+• Product : this class provides a simple way to manage products from the BackAppX platform. <br>
+• Category : this class provides a simple way to manage categories from the BackAppX platform. <br>
+• Order : this class provides a simple way to manage orders from the BackAppX platform. <br>
+• Payment : this class provides a simple way to manage payments from the BackAppX platform using stripe integration. <br>
+• FileStorage : this class provides a simple way to manage project's files from the BackAppX platform. <br>
+• Project : this class provides a simple way to link user's project to the BackAppX platform. <br>
 
 ## Installation
 Add the following dependency to your pubspec.yaml:
@@ -34,12 +24,25 @@ dependencies:
   backappx: 0.1.2
 ```
 
+## Requirements
+The package requires the following dependencies:
+• Flutter 2.0.0 or higher <br>
+• Dart 2.12.0 or higher <br>
+• BackAppX account <br>
+• BackAppX project <br>
+• dart:io <br>
+• dart:convert <br>
+• http: ^0.13.3 <br>
+• dart:async <br>
+• path_provider: ^2.0.2 <br>
+
+
+
 ## Usage
 To use this package, add backappx as a dependency in your pubspec.yaml file.
 
 ```dart
-
-import 'package:backappx/filestorage.dart';
+import 'package:backappx/project.dart';
 ```
 
 ## License
@@ -65,7 +68,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 
 
 ## Additional information
