@@ -39,7 +39,7 @@ To use this package, add backappx as a dependency in your pubspec.yaml file.
 
 ```dart
 
-import 'package:backappx/backappx.dart';
+import 'package:backappx/filestorage.dart';
 ```
 
 ## License
