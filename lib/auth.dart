@@ -1,10 +1,10 @@
 library backappx;
+
 import 'project.dart';
 import 'package:http/http.dart' as http;
 
-
 class Auth {
-  static final String _baseUrl = 'http://localhost:9092/client';
+  static final _baseUrl = 'http://localhost:9092/client';
   static final _registerUrl = '$_baseUrl/client';
   static final _loginUrl = '$_baseUrl/login';
   static final _editClientUrl = '$_baseUrl/client';
@@ -29,7 +29,10 @@ class Auth {
       'password': password,
       'reference': Project.projectRef
     });
-    print(response.body);
+    if (Project.projectRef == null) {
+      return http.Response('Please set the project reference', 400);
+    }
+
     return response;
   }
 
@@ -38,31 +41,31 @@ class Auth {
       'email': email,
       'password': password,
     });
-    print(response.body);
+
     return response;
   }
 
-  Future<http.Response> editProfile(id, name, familyName, fullName, email,
-      phoneNumber, password, image) async {
+  Future<http.Response> editProfile(
+      id, name, familyName, email, phoneNumber, password, image) async {
     final response = await http.put(Uri.parse('$_editClientUrl/$id'), body: {
       'name': name,
       'familyName': familyName,
-      'fullName': fullName,
+      'fullName': name + ' ' + familyName,
       'email': email,
       'phoneNumber': phoneNumber,
       'password': password,
       'reference': Project.projectRef,
       'image': image
     });
+    if (Project.projectRef == null) {
+      return http.Response('Please set the project reference', 400);
+    }
 
-    print(response.body);
     return response;
   }
 
   Future<http.Response> getClient(id) async {
     final response = await http.get(Uri.parse('$_getClientUrl/$id'));
-
-    print(response.body.toString());
     return response;
   }
 
@@ -70,7 +73,6 @@ class Auth {
     final response = await http.put(Uri.parse(_forgetPasswordUrl), body: {
       'email': email,
     });
-    print(response.body.toString());
     return response;
   }
 }
