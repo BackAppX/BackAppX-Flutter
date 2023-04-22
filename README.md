@@ -27,7 +27,7 @@ Add the following dependency to your pubspec.yaml:
 
 ```dart
 dependencies:
-  backappx: 0.1.2
+  backappx: 1.0.0
 ```
 
 ## Requirements
@@ -49,7 +49,7 @@ To use this package, add backappx as a dependency in your pubspec.yaml file.
 
 ```dart
 
-import 'package:backappx/project.dart';
+import 'package:backappx/backappx.dart';
 
 ```
 
