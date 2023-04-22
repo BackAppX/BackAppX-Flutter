@@ -1,6 +1,11 @@
 ## Backappx-Package
 BackAppX-Package is a Flutter package for the BackAppX platform.
 
+## Backappx-SDK
+[![GitHub](https://img.shields.io/github/license/BackAppX/BackAppX-Package)](https://github.com/BackAppX/BackAppX-Package/blob/0.1.2/LICENSE)
+[![Pub Version](https://img.shields.io/pub/v/backappx)](https://pub.dev/packages/backappx)
+<BR>
+BackAppX-SDK is a Flutter package for the BackAppX platform.
 
 ## Getting started
 This package is currently under development. Please use it at your own risk.
@@ -45,6 +50,7 @@ To use this package, add backappx as a dependency in your pubspec.yaml file.
 ```dart
 
 import 'package:backappx/project.dart';
+
 ```
 
 ## License
