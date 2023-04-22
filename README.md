@@ -26,7 +26,7 @@ dependencies:
 ```
 
 ## Requirements
-The package requires the following dependencies:
+The package requires the following dependencies: <br>
 • Flutter 2.0.0 or higher <br>
 • Dart 2.12.0 or higher <br>
 • BackAppX account <br>
