@@ -14,6 +14,7 @@ class Auth {
   static final _getClientUrl = '$_baseUrl/clientbyid';
   static final _forgetPasswordUrl = '$_baseUrl/clientforgot-password';
 
+
   static final Auth _instance = Auth._internal();
 
   factory Auth() {
@@ -23,6 +24,7 @@ class Auth {
   Auth._internal();
 
   Future<http.Response> register(
+
       name, familyName, email, phoneNumber, password) async {
     final response = await http.post(Uri.parse(_registerUrl), body: {
       'name': name,
@@ -44,6 +46,7 @@ class Auth {
       'email': email,
       'password': password,
     });
+
 
     return response;
   }
@@ -209,6 +212,7 @@ class Order {
     return response;
   }
 
+
   Future<http.Response> addOrder(quantity, productId, clientId) async {
     final response = await http.post(Uri.parse(_AddOrder), body: {
       'quantity': quantity,
@@ -282,6 +286,8 @@ class Product {
   static final _DeleteProduct = '$_baseUrl/:productId';
   static final _addProduct = '$_baseUrl/Addproduct';
 
+
+
   static final Product _instance = Product._internal();
 
   factory Product() {
@@ -329,5 +335,6 @@ class Product {
       //'image': image
     });
     return response;
+
   }
 }
