@@ -128,7 +128,7 @@ class Category {
 }
 
 class FileStorage {
-static final FileStorage _instance = FileStorage._internal();
+  static final FileStorage _instance = FileStorage._internal();
 
   factory FileStorage() {
     return _instance;
@@ -166,7 +166,7 @@ static final FileStorage _instance = FileStorage._internal();
 
   static Future<http.Response> getFile(projectId, imageName) async {
     final response =
-    await http.get(Uri.parse("$_getSingleFileUrl/$projectId/$imageName"));
+        await http.get(Uri.parse("$_getSingleFileUrl/$projectId/$imageName"));
     if (response.statusCode == 200) {
       final responseBody = json.encode(response.body);
       return http.Response(responseBody, response.statusCode);
@@ -177,7 +177,7 @@ static final FileStorage _instance = FileStorage._internal();
 
   static Future<http.Response> deleteFile(projectId, imageName) async {
     final response =
-    await http.delete(Uri.parse('$_deleteFileUrl/$projectId/$imageName'));
+        await http.delete(Uri.parse('$_deleteFileUrl/$projectId/$imageName'));
     if (response.statusCode == 200) {
       final responseBody = json.encode(response.body);
       return http.Response(responseBody, response.statusCode);
@@ -244,15 +244,15 @@ class Payment {
 
   Future<http.Response> pay(orderId, cardElementId) async {
     final response = await http.post(Uri.parse(_pay), headers: {
-      'stripekey':
-      Project.stripeKey, //this is the stripe key that you get from the dashboard
+      'stripekey': Project
+          .stripeKey, //this is the stripe key that you get from the dashboard
     }, body: {
       'orderId':
-      orderId, //this orderId is the id of the order returned by the order
+          orderId, //this orderId is the id of the order returned by the order
       "payment_method":
-      cardElementId, //this cardElementId is the id of the card element returned by stripe from cardElement.create()
+          cardElementId, //this cardElementId is the id of the card element returned by stripe from cardElement.create()
       "confirmation_method":
-      "manual", //this is the confirmation method of the payment
+          "manual", //this is the confirmation method of the payment
       'reference': Project.projectRef, //this is the reference of the project
     });
     if (Project.stripeKey == null) {
@@ -263,10 +263,10 @@ class Payment {
 }
 
 class Project {
-  static final String
-  projectRef= ''; // this is the project reference that you get from the dashboard
-  static final String
-  stripeKey= '' ; //this is the stripe key that you get from the dashboard
+  static final String projectRef =
+      ''; // this is the project reference that you get from the dashboard
+  static final String stripeKey =
+      ''; //this is the stripe key that you get from the dashboard
   static final Project _instance = Project._internal();
   factory Project() {
     return _instance;
