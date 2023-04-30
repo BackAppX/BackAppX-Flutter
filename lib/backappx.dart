@@ -1,19 +1,17 @@
-library backappx;
-
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:path/path.dart' as path;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Auth {
-  static final _baseUrl = 'http://localhost:9092/client';
+  static late final _baseUrl = '${dotenv.env['BASE_URL']}/client';
   static final _registerUrl = '$_baseUrl/client';
   static final _loginUrl = '$_baseUrl/login';
   static final _editClientUrl = '$_baseUrl/client';
   static final _getClientUrl = '$_baseUrl/clientbyid';
   static final _forgetPasswordUrl = '$_baseUrl/clientforgot-password';
-
 
   static final Auth _instance = Auth._internal();
 
@@ -21,10 +19,11 @@ class Auth {
     return _instance;
   }
 
-  Auth._internal();
+  Auth._internal() {
+    dotenv.load(); // load environment variables
+  }
 
   Future<http.Response> register(
-
       name, familyName, email, phoneNumber, password) async {
     final response = await http.post(Uri.parse(_registerUrl), body: {
       'name': name,
@@ -46,7 +45,6 @@ class Auth {
       'email': email,
       'password': password,
     });
-
 
     return response;
   }
@@ -92,12 +90,12 @@ class Category {
 
   Category._internal();
 
-  static final String _baseUrl = 'http://localhost:9092/categorie';
+  static final String _baseUrl = '${dotenv.env['BASE_URL']}/categorie';
   static final _DeleteCategorie = '$_baseUrl/:CategorieID';
   static final _addCategorie = '$_baseUrl/Addproduct';
 
   static Future<http.Response> DeleteCategorie(id) async {
-    final response = await http.delete(Uri.parse(_DeleteCategorie));
+    final response = await http.delete(Uri.parse('$_DeleteCategorie/$id'));
 
     print(response.body.toString());
     return response;
@@ -113,7 +111,7 @@ class Category {
 
   Future<http.Response> addCategoryToProduct(
       String productId, String categoryId) async {
-    final String baseUrl = 'http://localhost:9092';
+    final String baseUrl = '${dotenv.env['BASE_URL']}';
     final String endpoint = '/product/$productId/category';
     final url = Uri.parse('$baseUrl$endpoint');
 
@@ -139,11 +137,11 @@ class FileStorage {
 
   FileStorage._internal();
 
-  static const String _baseUrl = 'http://localhost:9092/project';
-  static const String _addFileUrl = '$_baseUrl/upload';
-  static const String _getFilesUrl = '$_baseUrl/images';
-  static const String _getSingleFileUrl = '$_baseUrl/file';
-  static const String _deleteFileUrl = '$_baseUrl/image';
+  static final String _baseUrl = '${dotenv.env['BASE_URL']}/project';
+  static final String _addFileUrl = '$_baseUrl/upload';
+  static final String _getFilesUrl = '$_baseUrl/images';
+  static final String _getSingleFileUrl = '$_baseUrl/file';
+  static final String _deleteFileUrl = '$_baseUrl/image';
 
   static Future<http.Response> addFile(File file, projectId) async {
     final stream = new http.ByteStream(file.openRead());
@@ -191,7 +189,7 @@ class FileStorage {
 }
 
 class Order {
-  static final String _baseUrl = 'http://localhost:9092/order';
+  static final String _baseUrl = '${dotenv.env['BASE_URL']}/order';
   static final _GetOrder = '$_baseUrl/orders';
   static final _AddOrder = '$_baseUrl/addorder';
   static final _GetOrderByID = '$_baseUrl/:orderId';
@@ -211,7 +209,6 @@ class Order {
     print(response.body.toString());
     return response;
   }
-
 
   Future<http.Response> addOrder(quantity, productId, clientId) async {
     final response = await http.post(Uri.parse(_AddOrder), body: {
@@ -236,7 +233,8 @@ class Order {
 }
 
 class Payment {
-  static final _baseUrl = 'http://localhost:9092/paymentService';
+  static final String _baseUrl = '${dotenv.env['BASE_URL']}/paymentService';
+
   static final _pay = '$_baseUrl/pay';
   static final Payment _instance = Payment._internal();
 
@@ -279,14 +277,13 @@ class Project {
 }
 
 class Product {
-  static final String _baseUrl = 'http://localhost:9092/product';
+  static final String _baseUrl = '${dotenv.env['BASE_URL']}/product';
+
   static final _Getproduct = '$_baseUrl/products';
   static final _getSingleProduct = '$_baseUrl';
   static final _UpdateProduct = '$_baseUrl/:productId';
   static final _DeleteProduct = '$_baseUrl/:productId';
   static final _addProduct = '$_baseUrl/Addproduct';
-
-
 
   static final Product _instance = Product._internal();
 
@@ -335,6 +332,5 @@ class Product {
       //'image': image
     });
     return response;
-
   }
 }

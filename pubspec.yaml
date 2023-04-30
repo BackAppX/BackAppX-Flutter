@@ -12,6 +12,8 @@ dependencies:
     sdk: flutter
   http: ^0.13.3
   path: ^1.8.1
+  flutter_dotenv: ^5.0.1
+  #dotenv: ^4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -23,10 +25,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # To add assets to your package, add an assets section, like this:
-   assets:
-     - files
+  assets:
+    - files
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see
