@@ -23,8 +23,8 @@ class BackAppX {
       ''; // this is the project reference that you get from the dashboard
   static const String stripeKey =
       ''; //this is the stripe key that you get from the dashboard
-  //static const String _baseUrl = 'http://localshost:9092';
-  static const String _baseUrl = ''; // this is the base url of the backend api
+  static const String _baseUrl = 'http://localshost:9092';
+  //static const String _baseUrl = ''; // this is the base url of the backend api
 
   /********************************************************************************************************/
   //*************************************** Client Auth ***************************************************/
@@ -108,9 +108,15 @@ class BackAppX {
   /// *****************************************************************************************************/
 
   static const _deleteCategorie =
-      '$_baseUrl/categorie/:CategorieID'; // delete categorie url of the api backend
+      '$_baseUrl/category/:id'; // delete categorie url of the api backend
   static const _addCategorie =
-      '$_baseUrl/categorie/Addproduct'; // add categorie url of the api backend
+      '$_baseUrl/category/allCategories'; // add categorie url of the api backend
+
+  static const _getAllCategoriesByProject =
+      '$_baseUrl/getAllCategoriesByProject/:projectId'; // get categorie url of the api backend
+
+  static const _updateCategory =
+      '$_baseUrl/category/:id'; // update categorie url of the api backend
 
   // delete categorie function that takes the categorie id
   static Future<http.Response> deleteCategorie(id) async {
@@ -119,29 +125,34 @@ class BackAppX {
   }
 
   // add categorie function that takes the categorie name
-  static Future<http.Response> addCategorie(name) async {
+  static Future<http.Response> addCategorie(
+      name, description, reference, project, image) async {
     final response = await http.post(Uri.parse(_addCategorie), body: {
       'name': name,
+      'description': description,
+      'reference': reference,
+      'project': project,
+      'image': image
     });
     return response;
   }
 
-  // add categorie to product function that takes the product id and the categorie id
-  Future<http.Response> addCategoryToProduct(
-      String productId, String categoryId) async {
-    const String baseUrl = 'http://localhost:9092';
-    final String endpoint = '/product/$productId/category';
-    final url = Uri.parse('$baseUrl$endpoint');
+  // Show all categories of a specific project
+  Future<http.Response> getAllCategoriesByProject(id) async {
+    final response =
+        await http.get(Uri.parse('$_getAllCategoriesByProject/$id'));
+    return response;
+  }
 
-    try {
-      final response = await http.post(
-        url,
-        body: {'categoryId': categoryId},
-      );
-      return response;
-    } catch (error) {
-      return Future.value(http.Response('Error', 500));
-    }
+  // update product function that takes the product name, the product price and the product quantity
+  Future<http.Response> updateCategory(name, description, reference) async {
+    final response = await http.put(Uri.parse(_updateCategory), body: {
+      'name': name,
+      'description': description,
+      'reference': reference,
+      //'image': image
+    });
+    return response;
   }
 
   /********************************************************************************************************/
@@ -225,13 +236,11 @@ class BackAppX {
   }
 
   // add order function that takes the quantity, the product id and the client id
-  Future<http.Response> addOrder(quantity, productId, clientId) async {
+  Future<http.Response> addOrder(projectId, customerId, products) async {
     final response = await http.post(Uri.parse(_addOrder), body: {
-      'quantity': quantity,
-      'productId': productId,
-      'clientId': clientId,
-      'reference': projectRef,
-      //'image': image
+      'projectId': projectId,
+      'customerId': customerId,
+      'products': products,
     });
     return response;
   }
