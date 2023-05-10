@@ -6,9 +6,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-
 class BackAppX {
-
   static final BackAppX _instance = BackAppX._internal(); // singleton
 
   factory BackAppX() {
@@ -25,17 +23,23 @@ class BackAppX {
       ''; // this is the project reference that you get from the dashboard
   static const String stripeKey =
       ''; //this is the stripe key that you get from the dashboard
-  static const String _baseUrl = ''; // this is the base url of the backend api
+  static const String _baseUrl = 'http://localshost:9092';
+  //static const String _baseUrl = ''; // this is the base url of the backend api
 
   /********************************************************************************************************/
   //*************************************** Client Auth ***************************************************/
   /// *****************************************************************************************************/
 
-  static const _registerUrl = '$_baseUrl/client/client'; // register url of the api backend
-  static const _loginUrl = '$_baseUrl/client/login'; // login url of the api backend
-  static const _editClientUrl = '$_baseUrl/client/client'; // edit client url of the api backend
-  static const _getClientUrl = '$_baseUrl/client/clientbyid'; // get client url of the api backend
-  static const _forgetPasswordUrl = '$_baseUrl/client/clientforgot-password'; // forget password url of the api backend
+  static const _registerUrl =
+      '$_baseUrl/client/client'; // register url of the api backend
+  static const _loginUrl =
+      '$_baseUrl/client/login'; // login url of the api backend
+  static const _editClientUrl =
+      '$_baseUrl/client/client'; // edit client url of the api backend
+  static const _getClientUrl =
+      '$_baseUrl/client/clientbyid'; // get client url of the api backend
+  static const _forgetPasswordUrl =
+      '$_baseUrl/client/clientforgot-password'; // forget password url of the api backend
 
   // register function that takes the client name, family name, email, phone number and password
   Future<http.Response> register(
@@ -54,7 +58,8 @@ class BackAppX {
 
     return response;
   }
- // login function that takes the client email and password
+
+  // login function that takes the client email and password
   Future<http.Response> login(email, password) async {
     final response = await http.post(Uri.parse(_loginUrl), body: {
       'email': email,
@@ -63,6 +68,7 @@ class BackAppX {
 
     return response;
   }
+
   // edit profile function that takes the client id, name, family name, email, phone number and password
   Future<http.Response> editProfile(
       id, name, familyName, email, phoneNumber, password, image) async {
@@ -82,11 +88,13 @@ class BackAppX {
 
     return response;
   }
+
   // get client function that takes the client id
   Future<http.Response> getClient(id) async {
     final response = await http.get(Uri.parse('$_getClientUrl/$id'));
     return response;
   }
+
   // forget password function that takes the client email
   Future<http.Response> forgetPassword(email) async {
     final response = await http.put(Uri.parse(_forgetPasswordUrl), body: {
@@ -99,47 +107,66 @@ class BackAppX {
   /************************************* Category Management **********************************************/
   /// *****************************************************************************************************/
 
-  static const _deleteCategorie = '$_baseUrl/categorie/:CategorieID'; // delete categorie url of the api backend
-  static const _addCategorie = '$_baseUrl/categorie/Addproduct'; // add categorie url of the api backend
+  static const _deleteCategorie =
+      '$_baseUrl/category/:id'; // delete categorie url of the api backend
+  static const _addCategorie =
+      '$_baseUrl/category/allCategories'; // add categorie url of the api backend
+
+  static const _getAllCategoriesByProject =
+      '$_baseUrl/getAllCategoriesByProject/:projectId'; // get categorie url of the api backend
+
+  static const _updateCategory =
+      '$_baseUrl/category/:id'; // update categorie url of the api backend
 
   // delete categorie function that takes the categorie id
   static Future<http.Response> deleteCategorie(id) async {
     final response = await http.delete(Uri.parse(_deleteCategorie));
     return response;
   }
+
   // add categorie function that takes the categorie name
-  static Future<http.Response> addCategorie(name) async {
+  static Future<http.Response> addCategorie(
+      name, description, reference, project, image) async {
     final response = await http.post(Uri.parse(_addCategorie), body: {
       'name': name,
+      'description': description,
+      'reference': reference,
+      'project': project,
+      'image': image
     });
     return response;
   }
-  // add categorie to product function that takes the product id and the categorie id
-  Future<http.Response> addCategoryToProduct(
-      String productId, String categoryId) async {
-    const String baseUrl = 'http://localhost:9092';
-    final String endpoint = '/product/$productId/category';
-    final url = Uri.parse('$baseUrl$endpoint');
 
-    try {
-      final response = await http.post(
-        url,
-        body: {'categoryId': categoryId},
-      );
-      return response;
-    } catch (error) {
-      return Future.value(http.Response('Error', 500));
-    }
+  // Show all categories of a specific project
+  Future<http.Response> getAllCategoriesByProject(id) async {
+    final response =
+        await http.get(Uri.parse('$_getAllCategoriesByProject/$id'));
+    return response;
+  }
+
+  // update product function that takes the product name, the product price and the product quantity
+  Future<http.Response> updateCategory(name, description, reference) async {
+    final response = await http.put(Uri.parse(_updateCategory), body: {
+      'name': name,
+      'description': description,
+      'reference': reference,
+      //'image': image
+    });
+    return response;
   }
 
   /********************************************************************************************************/
   /************************************* File Storage Management *******************************************/
   /// ******************************************************************************************************/
 
-  static const String _addFileUrl = '$_baseUrl/project/upload';  // add file url of the api backend
-  static const String _getFilesUrl = '$_baseUrl/project/images';  // get files url of the api backend
-  static const String _getSingleFileUrl = '$_baseUrl/project/file'; // get single file url of the api backend
-  static const String _deleteFileUrl = '$_baseUrl/project/image';  // delete file url of the api backend
+  static const String _addFileUrl =
+      '$_baseUrl/project/upload'; // add file url of the api backend
+  static const String _getFilesUrl =
+      '$_baseUrl/project/images'; // get files url of the api backend
+  static const String _getSingleFileUrl =
+      '$_baseUrl/project/file'; // get single file url of the api backend
+  static const String _deleteFileUrl =
+      '$_baseUrl/project/image'; // delete file url of the api backend
 
   // add file function that takes the file and the project id
   static Future<http.Response> addFile(File file, projectId) async {
@@ -193,10 +220,14 @@ class BackAppX {
   /************************************* Order Management ***********************************************/
   /// ******************************************************************************************************/
 
-  static const _getOrder = '$_baseUrl/order/orders'; // get order url of the api backend
-  static const _addOrder = '$_baseUrl/order/addorder'; // add order url of the api backend
-  static const _getOrderByID = '$_baseUrl/order/:orderId';  // get order by id url of the api backend
-  static const _deleteOrder = '$_baseUrl/order/:orderId';  // delete order url of the api backend
+  static const _getOrder =
+      '$_baseUrl/order/orders'; // get order url of the api backend
+  static const _addOrder =
+      '$_baseUrl/order/addorder'; // add order url of the api backend
+  static const _getOrderByID =
+      '$_baseUrl/order/:orderId'; // get order by id url of the api backend
+  static const _deleteOrder =
+      '$_baseUrl/order/:orderId'; // delete order url of the api backend
 
   // get order function that takes the order id
   Future<http.Response> getOrder(id) async {
@@ -205,13 +236,11 @@ class BackAppX {
   }
 
   // add order function that takes the quantity, the product id and the client id
-  Future<http.Response> addOrder(quantity, productId, clientId) async {
+  Future<http.Response> addOrder(projectId, customerId, products) async {
     final response = await http.post(Uri.parse(_addOrder), body: {
-      'quantity': quantity,
-      'productId': productId,
-      'clientId': clientId,
-      'reference': projectRef,
-      //'image': image
+      'projectId': projectId,
+      'customerId': customerId,
+      'products': products,
     });
     return response;
   }
@@ -232,7 +261,8 @@ class BackAppX {
   /************************************* Payment Management ***********************************************/
   /// ******************************************************************************************************/
 
-  static const _pay = '$_baseUrl/paymentService/pay'; // pay url of the api backend
+  static const _pay =
+      '$_baseUrl/paymentService/pay'; // pay url of the api backend
 
   // pay function that takes the order id and the card element id
   Future<http.Response> pay(orderId, cardElementId) async {
@@ -258,11 +288,16 @@ class BackAppX {
 /************************************* Product Management ***********************************************/
   /// ******************************************************************************************************/
 
-  static const _getproduct = '$_baseUrl/product/products'; // get product url of the api backend
-  static const _getSingleProduct = '$_baseUrl/product'; // get single product url of the api backend
-  static const _updateProduct = '$_baseUrl/product/:productId'; // update product url of the api backend
-  static const _deleteProduct = '$_baseUrl/product/:productId'; // delete product url of the api backend
-  static const _addProduct = '$_baseUrl/product/Addproduct';  // add product url of the api backend
+  static const _getproduct =
+      '$_baseUrl/product/products'; // get product url of the api backend
+  static const _getSingleProduct =
+      '$_baseUrl/product'; // get single product url of the api backend
+  static const _updateProduct =
+      '$_baseUrl/product/:productId'; // update product url of the api backend
+  static const _deleteProduct =
+      '$_baseUrl/product/:productId'; // delete product url of the api backend
+  static const _addProduct =
+      '$_baseUrl/product/Addproduct'; // add product url of the api backend
 
   // get product function that takes the product id
   Future<http.Response> getProduct(id) async {

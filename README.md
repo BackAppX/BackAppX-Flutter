@@ -1,11 +1,8 @@
 ## Backappx-Package
-BackAppX-Package is a Flutter package for the BackAppX platform.
-
-## Backappx-SDK
 [![GitHub](https://img.shields.io/github/license/BackAppX/BackAppX-Package)](https://github.com/BackAppX/BackAppX-Package/blob/0.1.2/LICENSE)
 [![Pub Version](https://img.shields.io/pub/v/backappx)](https://pub.dev/packages/backappx)
 <BR>
-BackAppX-SDK is a Flutter package for the BackAppX platform.
+BackAppX-Package is a Flutter package for the BackAppX platform.
 
 ## Getting started
 This package is currently under development. Please use it at your own risk.
@@ -18,7 +15,7 @@ It provides the following classes:
 • Product : this class provides a simple way to manage products from the BackAppX platform. <br>
 • Category : this class provides a simple way to manage categories from the BackAppX platform. <br>
 • Order : this class provides a simple way to manage orders from the BackAppX platform. <br>
-• Payment : this class provides a simple way to manage payments from the BackAppX platform using stripe integration. <br>
+• Payment : this class provides a simple way to manage payments from the BackAppX platform using stripe api. <br>
 • FileStorage : this class provides a simple way to manage project's files from the BackAppX platform. <br>
 • Project : this class provides a simple way to link user's project to the BackAppX platform. <br>
 
@@ -36,10 +33,7 @@ The package requires the following dependencies: <br>
 • Dart 2.12.0 or higher <br>
 • BackAppX account <br>
 • BackAppX project <br>
-• dart:io <br>
-• dart:convert <br>
 • http: ^0.13.3 <br>
-• dart:async <br>
 • path_provider: ^2.0.2 <br>
 
 
